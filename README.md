@@ -9,16 +9,15 @@ Ray Autoscaling is currently not supported in Databricks.
 
 ## Setting up Ray Cluster:
 
-there are 2 methods to initialize ray on Databricks on a non- autoscaling cluster
+There are 2 methods to initialize ray on Databricks on a non-autoscaling cluster
 
-1. using the init_script.sh 
-2. using the ray_restart.sh notebook to run an adhoc cluster
+1. Using the init_script.sh 
+2. Using the ray_restart.sh notebook to start an adhoc ray cluster (Ray will not be initialized on nodes added later to the cluster)
 
 
 ## Viewing the Ray Dashboard:
 
 the Ray Dashboard  uses reverse proxy method and the url is generated using the below command
-
-'''
+```
 %run ./dashboard_url
-'''
+```
