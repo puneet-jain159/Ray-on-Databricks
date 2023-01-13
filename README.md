@@ -20,7 +20,7 @@ There are 2 methods to initialize ray on Databricks on a non-autoscaling cluster
 1. Using the init_script.sh <br>
     Create an init_script.sh and attach to the cluster 
 2. Using the ray_restart.sh notebook to start an adhoc ray cluster (Ray will not be initialized on nodes added later to the cluster) <br>
-   run the below command in a notebook cell python interpreter will be restarted so run it at the start of the workflow <br>
+   run the below command in a notebook cell python ( Caution :interpreter will be restarted so run it at the start of the workflow) <br>
     ``` %run ./initialize_ray $version="2.2.0" ```
 
 
