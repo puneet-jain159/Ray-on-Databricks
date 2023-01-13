@@ -28,5 +28,6 @@ There are 2 methods to initialize ray on Databricks on a non-autoscaling cluster
 
 the Ray Dashboard  uses reverse proxy method and the url is generated using the below command
 ```
-%run ./dashboard_url
+from utils import get_dashboard_url
+print(f"Link to ray Dashboard : {get_dashboard_url(spark,dbutils)}")
 ```
