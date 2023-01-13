@@ -1,14 +1,9 @@
 #RAY PORT
 RAY_PORT=9339
-REDIS_PASS="d4t4bricks"
 
 # install ray
 # Install additional ray libraries
-/databricks/python/bin/pip install ray[tune]==2.2.0
-/databricks/python/bin/pip install ray[default]==2.2.0
-/databricks/python/bin/pip install ray[rllib]==2.2.0
-/databricks/python/bin/pip install prophet==1.1.1
-/databricks/python/bin/pip install "holidays==0.11.3.1" --force-reinstall
+/databricks/python/bin/pip install ray[tune,default]==2.2.0
 
 mkdir /tmp/ray/job
 
