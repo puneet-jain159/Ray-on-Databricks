@@ -9,10 +9,10 @@ Ray Autoscaling is currently not supported in Databricks.
 
 ## Setting up Ray Cluster:
 
-Ray uses the below ports to run : 
+Ray uses the below ports to run : </br>
 
-Port to connect to head node : 9339
-Port to connect to dashboard : 8501
+Port to connect to head node : **9339** </br>
+Port to connect to dashboard : **8501** </br>
 
 
 There are 2 methods to initialize ray on Databricks on a non-autoscaling cluster
