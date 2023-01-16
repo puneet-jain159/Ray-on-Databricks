@@ -34,5 +34,5 @@ print(f"Link to ray Dashboard : {get_dashboard_url(spark,dbutils)}")
 
 ## Examples:
 
-- Deep Learning using pytorch
-     The notebook pytorch_distributed_example shows how to run a distributed training job using pytorch DDP and Ray 
+- Deep Learning using pytorch </br>
+     The notebook ```pytorch_distributed_example``` shows how to run a distributed training job using pytorch DDP and Ray 
