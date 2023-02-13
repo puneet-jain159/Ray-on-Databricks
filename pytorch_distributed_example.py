@@ -158,11 +158,12 @@ def train_func(config: Dict):
 def train_fashion_mnist(num_workers=2, use_gpu=False):
     trainer = TorchTrainer(
         train_loop_per_worker=train_func,
-        train_loop_config={"lr": 1e-3, "batch_size": 64, "epochs": 100},
+        train_loop_config={"lr": 1e-3, "batch_size": 8, "epochs": 10},
         scaling_config=ScalingConfig(num_workers=num_workers,
                                      use_gpu=use_gpu,
-                                    resources_per_worker = {"GPU" : 1}),
-    )
+                                     resources_per_worker = {"CPU" : 1}),
+        torch_config = TorchConfig(backend="gloo",
+                                   init_method = 'tcp'))
     result = trainer.fit()
     print(f"Last result: {result.metrics}")
 
@@ -170,11 +171,7 @@ def train_fashion_mnist(num_workers=2, use_gpu=False):
 
 # COMMAND ----------
 
-ray.init(ignore_reinit_error=True )
-
-# COMMAND ----------
-
-train_fashion_mnist(num_workers=3,use_gpu=True)
+train_fashion_mnist(num_workers=7,use_gpu=False)
 
 # COMMAND ----------
 

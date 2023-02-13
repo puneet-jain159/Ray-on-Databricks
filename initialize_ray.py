@@ -15,7 +15,7 @@ ray = f"ray[tune,default]=={version}"
 
 # MAGIC %sh 
 # MAGIC RAY_PORT=9339
-# MAGIC ulimit -n 1000000 && ray stop --force &&  ray start  --head --min-worker-port=20000 --max-worker-port=25000 --temp-dir="/tmp/ray/job" --plasma-directory="/tmp/ray/job" --port=$RAY_PORT  --dashboard-port=8501 --dashboard-host="0.0.0.0" --include-dashboard=true --num-cpus=0
+# MAGIC ulimit -n 1000000 && ray stop --force &&  ray start  --head --min-worker-port=20000 --max-worker-port=25000 --temp-dir="/tmp/ray/job" --plasma-directory="/tmp/ray/job" --port=$RAY_PORT  --dashboard-port=8501 --dashboard-host="0.0.0.0" --include-dashboard=true --num-cpus=2
 
 # COMMAND ----------
 
@@ -48,7 +48,11 @@ time.sleep(15)
 import ray
 hst = spark.conf.get("spark.driver.host")
 prt = 9339
-ray.init(address=f"{hst}:{prt}", ignore_reinit_error=True)
+from ray.runtime_env import RuntimeEnv
+runtime_env = {
+    "env_vars": {"GLOO_SOCKET_IFNAME":"eth0"}}
+ray.init(address= f"{hst}:{prt}" ,
+         runtime_env=RuntimeEnv(env_vars = runtime_env['env_vars']))
 
 # COMMAND ----------
 
