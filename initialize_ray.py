@@ -9,13 +9,13 @@ ray = f"ray[tune,default]=={version}"
 
 # COMMAND ----------
 
-# MAGIC %pip install $ray
+# MAGIC %pip install $ray #other dependencies
 
 # COMMAND ----------
 
 # MAGIC %sh 
 # MAGIC RAY_PORT=9339
-# MAGIC ulimit -n 1000000 && ray stop --force &&  ray start  --head --min-worker-port=20000 --max-worker-port=25000 --temp-dir="/tmp/ray/job" --plasma-directory="/tmp/ray/job" --port=$RAY_PORT  --dashboard-port=8501 --dashboard-host="0.0.0.0" --include-dashboard=true --num-cpus=2
+# MAGIC ulimit -n 1000000 && ray stop --force &&  ray start  --head --min-worker-port=20000 --max-worker-port=25000 --temp-dir="/local_disk0/tmp/ray/job"  --port=$RAY_PORT  --dashboard-port=8501 --dashboard-host="0.0.0.0" --include-dashboard=true --num-cpus=0 --num-gpus=0 --system-config='{"object_spilling_config":"{\"type\":\"filesystem\",\"params\":{\"directory_path\":\"/local_disk0/tmp/spill\"}}"}'
 
 # COMMAND ----------
 
